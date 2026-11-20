@@ -22,15 +22,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Generate static site
         run: |
+          chmod 646 structurizr/workspace.*
           mkdir ./structurizr/build
           
           docker run --rm  -v ./structurizr:/usr/local/structurizr structurizr/structurizr:latest \
           export -workspace workspace.dsl -format static -output build
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./structurizr/build
 
@@ -43,4 +44,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
