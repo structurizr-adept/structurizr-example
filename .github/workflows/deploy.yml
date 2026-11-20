@@ -25,10 +25,9 @@ jobs:
         uses: actions/checkout@v7
       - name: Generate static site
         run: |
-          chmod 646 structurizr/workspace.*
           mkdir ./structurizr/build
           
-          docker run --rm  -v ./structurizr:/usr/local/structurizr structurizr/structurizr:latest \
+          docker run --rm -u "$(id -u):$(id -g)" -v ./structurizr:/usr/local/structurizr structurizr/structurizr:latest \
           export -workspace workspace.dsl -format static -output build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
