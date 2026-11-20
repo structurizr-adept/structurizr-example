@@ -2,6 +2,8 @@
 
 Пример того что можно сделать с помощью [Structurizr](https://docs.structurizr.com)
 
+https://structurizr-adept.github.io/structurizr-example
+
 ## Локальный запуск
 
 [Quickstart](https://docs.structurizr.com/local/quickstart)
@@ -19,7 +21,7 @@ docker run -it --rm -p 5555:8080 -v ./structurizr:/usr/local/structurizr structu
 #### Решение Primero
 
 ```sh
-chmod -R o+w ./structurizr
+chmod 646 structurizr/workspace.*
 ```
 
 #### Решение Segundo
