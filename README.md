@@ -47,3 +47,24 @@ docker run -it --rm -p 5555:8080 -u "$(id -u):$(id -g)" -v ./structurizr:/usr/lo
 https://hub.docker.com/r/structurizr/structurizr/tags
 
 После запуска докера открыть - http://localhost:5555
+
+## Генерация PNG/SVG
+
+Для генерации png/svg понадобится отедельный образ с тегом `-playwright`
+
+Его можно использовать и для команды `local` которая описана выше
+
+SVG
+
+```sh
+docker run -it --rm -v ./structurizr:/usr/local/structurizr structurizr/structurizr:2026.10.26-playwright export -workspace workspace.dsl -format svg -output generated/svg
+```
+
+PNG
+
+```sh
+docker run -it --rm -v ./structurizr:/usr/local/structurizr structurizr/structurizr:2026.10.26-playwright export -workspace workspace.dsl -format png -output generated/png
+```
+
+Решение проблемы с правами на сгенерированные схемы (принадлежат root) идентичное
+и описано выше
